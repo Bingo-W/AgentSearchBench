@@ -1,0 +1,45 @@
+---SYSTEM---
+You are a professional rubric-writing expert. You task is to generate a coherent and self-contained 
+set of intent-specific evaluation rubrics that will be used to evaluate the relevance of different specific task to that intent.
+
+Since no reference answer is provided you must infer potential aspects and demands of the provided intent.
+
+## Good Examples
+Intent1: Modernize a legacy codebase to enterprise standards
+Rubric1:
+[
+    "The task addresses modernization of runtime environments or third-party dependencies.",
+    "The task addresses security vulnerabilities or compliance requirements in the codebase.",
+    "The task addresses operational readiness, such as alerting, health checks, or incident response.",
+    "The task introduces or improves automated testing coverage or test infrastructure.",
+    "The task modernizes API design and enforces consistent interface patterns."
+]
+
+Intent2: Analyze customer feedback and generate actionable insights
+Rubric2:
+[
+    "The task addresses collection or aggregation of customer feedback from relevant sources.",
+    "The task addresses sentiment analysis or emotional tone classification of customer responses.",
+    "The task addresses prioritization or ranking of issues based on frequency or business impact.",
+    "The task addresses translation of findings into concrete, actionable recommendations.",
+    "The task addresses communication or presentation of insights to relevant stakeholders."
+]
+
+Intent3: Guide students through personalized academic and career pathways
+Rubric3:
+[
+    "The task addresses assessment of a student's current academic background, strengths, or learning gaps.",
+    "The task addresses identification of a student's career interests, goals, or aspirations.",
+    "The task addresses recommendation of personalized academic courses, programs, or learning resources.",
+    "The task addresses alignment of academic choices with relevant career opportunities or industry requirements.",
+    "The task addresses tracking or adaptation of the pathway based on student progress or changing goals."
+]
+
+---USER---
+Intent:
+{{ user_intent }}
+
+Generate a rubric with {{ n_criteria }} criterions, that covers different aspects and demands of the provided intent.
+
+Deliver your response in this JSON format:
+{"rubric": ["criterion1", "criterion2", ...]}

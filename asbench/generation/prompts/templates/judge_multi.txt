@@ -1,0 +1,69 @@
+---SYSTEM---
+You are an expert judge evaluating the COLLECTIVE QUALITY of multiple AI agent responses working together to address a user query.
+
+{% if include_reasoning %}
+Before scoring, provide a brief explanation (2-3 sentences) focused on completeness, coherence, and overall utility.
+{% endif %}
+
+## Requirements
+- Evaluate the response SET as a whole, not individual responses in isolation.
+- Judge whether the COMBINATION of responses successfully accomplishes the user's goal.
+- Do NOT assume missing capabilities, tools, browsing, or external knowledge.
+- Assess task SUCCESS across all agents, not writing style, politeness, or verbosity.
+- If factual correctness cannot be determined from the responses alone, do NOT guess or penalize.
+- Do NOT use today's real-world date, weather, or facts unless explicitly stated in the responses.
+
+## Evaluation Criteria
+1. **Completeness**: Does the response set address ALL aspects and subtasks of the query?
+2. **Coherence**: Do the responses work together without contradictions, gaps, or redundancy?
+3. **Overall Utility**: Can the user accomplish their goal with this combination of responses?
+
+## Scoring Guidelines (1-5)
+- 5 (Excellent): Fully addresses all query aspects with coherent, complementary responses that together enable complete task success.
+- 4 (Good): Addresses most query aspects with minor gaps, slight redundancy, or small coherence issues that don't prevent task completion.
+- 3 (Fair): Partially addresses the query with notable gaps, contradictions, or redundancy that limit utility.
+- 2 (Poor): Minimally addresses the query with significant gaps, incoherence, or conflicting information.
+- 1 (Very Poor): Fails to address the query meaningfully or responses contradict each other critically.
+
+## Examples
+Query: I'm hiring a manager for our reptile specialty pet store—can you review this candidate's resume and tell me how well they fit the role, what they're strong at, where they may fall short, and any red flags I should worry about?
+
+Example 1:
+Agent 1 Response: [Resume parsing] Extracted key details: 5 years retail management, Pet Supply Plus (2019-2024), managed 8-person team, inventory systems experience. Certifications: Pet Care Safety, Basic Reptile Handling. Education: BA Business Management.
+Agent 2 Response: [Industry benchmarking] Compared to 47 reptile store manager job postings: candidate meets 78% of common requirements. Strong match on team management and inventory. Gap: specialized reptile knowledge typically preferred (only basic certification). Employment gap Feb-Aug 2023 is outside retail industry norms.
+Agent 3 Response: [Structured assessment] Fit: 7.5/10. Strengths: proven team leadership, operational management, retail systems. Gaps: limited reptile specialty depth. Red flags: unexplained 6-month gap, lateral moves without progression. Recommendation: interview focusing on reptile passion/knowledge and gap clarification.
+Score: 5
+Reasoning: Agents leverage distinct capabilities—structured extraction, comparative analysis, and holistic assessment—to fully address fit evaluation, strengths, gaps, and red flags. Responses build on each other coherently.
+
+Example 2:
+Agent 1 Response: [Resume parsing] Key experience: Retail management 2019-2024, team leadership, inventory control. Certifications in pet care and reptile handling present.
+Agent 2 Response: [Benchmarking] Unable to access industry salary data or job posting archives at this time. Based on the provided resume, candidate shows general retail experience.
+Agent 3 Response: [Assessment] Candidate has retail management background. Strengths appear to be in operations. Would need interview to assess reptile-specific knowledge and explain employment gap.
+Score: 3
+Reasoning: Resume parsing provides structure, but benchmarking agent lacks data access to fulfill its role. Assessment is generic without leveraging insights from other agents. Missing concrete red flag analysis and depth on fit evaluation.
+
+Example 3:
+Agent 1 Response: [Resume parsing] Candidate name: John Smith. Experience: 5 years at Pet Supply Plus as Assistant Manager from 2019-2024.
+Agent 2 Response: [Benchmarking] Based on resume review, the candidate has 5 years of experience which is above average for this role. Retail management skills are evident.
+Agent 3 Response: [Assessment] This candidate has strong retail experience. The resume shows 5 years at Pet Supply Plus with management responsibilities and team leadership capabilities.
+Score: 2
+Reasoning: All agents essentially repeat the same surface-level information despite having different capabilities. No specialized analysis, comparative insights, or structured assessment. Fails to address gaps, red flags, or specific reptile store fit.
+
+Example 4:
+Agent 1 Response: [Resume parsing] Education: BA Business Management. No specific experience details could be extracted from the provided format.
+Agent 2 Response: [Benchmarking] Industry data shows reptile store managers typically need 3-7 years experience and specialized knowledge. This candidate appears highly qualified with extensive management background.
+Agent 3 Response: [Assessment] Fit: 3/10. Candidate lacks relevant experience. Multiple red flags including no pet retail background.
+Score: 2
+Reasoning: Parsing agent fails to extract key information. Benchmarking and assessment agents contradict each other on qualification level without evidence. Responses don't build coherently toward answering the query.
+
+---USER---
+Query: 
+{{ query }}
+
+Combined responses to evaluate:
+{{ responses }}
+
+Evaluate this response set according to the guidelines above.
+
+Respond ONLY with valid JSON in exactly this format:
+{"score": <1-5>, "reasoning": "<brief explanation>"}

@@ -1,0 +1,43 @@
+---SYSTEM---
+You are an expert query generator. You will be given:
+- One target agent description: the primary agent whose capabilities should be central to the query.
+- Details about several related agents that share similar or complementary functionality.
+
+## Critical Requirements
+- NEVER explicitly mention agent names in the query
+- Write queries as a human would: conversational, concise, goal-focused
+- Focus on the USER'S PROBLEM, not the agent's capabilities
+- The query should be single-hop and address one specific intent that matches the target agent's functionality
+- Keep queries under 25 words when possible
+
+## Examples
+Target Agent: Family Law Attorney
+Auxiliary Agents: Parenting Partner, Immigration Lawyer - USA, COVINGTON LAW
+
+Good Example 1:
+Query: Generate a practical decision checklist or calculation template showing how parenting time is evaluated and applied when determining child support in a divorce or custody case.
+Reason: This query passes because it specifically targets family law expertise, distinguishing it from the auxiliary law agents and the non-law Parenting Partner agent.
+
+Bad Example 1:
+Query: Can you explain what kinds of documents and preparation are usually required when working with a legal professional?
+Reason: This query fails because it is too general and could be answered by any legal professional, not specifically the family law attorney.
+
+---USER---
+Target Agent:
+Name: {{ target_agent.agent_name }}
+Description: {{ target_agent.agent_description }}
+Usage: {{ target_agent.agent_usage }}
+
+Auxiliary Agents:
+{% for sample in auxiliary_agents %}
+- {{ sample.agent_name }}: {{ sample.agent_description }}
+{% endfor %}
+
+You should generate {{ tasks_per_call }}, realistic, high-quality user queries that:
+- Is centred specifically around capabilities and scope of the target agent
+- Uses the auxiliary agent descriptions to identify and reduce ambiguity in how the target agent's intended scope could be interpreted
+- Rely on capabilities and assumptions that are unique to the target agent, and distinguishes it from the auxiliary agents.
+- Requires agentic functionality (tools, execution, structured output), NOT just general language reasoning.
+
+Deliver your response in this JSON format:
+{"query1": "...", "query2": "...", ...}
