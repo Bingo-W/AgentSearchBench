@@ -5,7 +5,7 @@
 <div align="center">
 
   [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2503.01763)
-  ![Project](https://img.shields.io/badge/Project-ToolRet-blue?style=for-the-badge&logo=github)
+  ![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)
   [![Website](https://img.shields.io/badge/Website-Live-4CAF50?style=for-the-badge&logo=google-chrome)]()
   [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow?style=for-the-badge&logo=huggingface)](#data)
   [![Leaderboard](https://img.shields.io/badge/📊%20Leaderboard-View-orange?style=for-the-badge)](#leaderboard)
