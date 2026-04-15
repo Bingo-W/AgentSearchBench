@@ -36,7 +36,7 @@ Here is an overview of the benchmark construction:
 
 <br>
 <div align="center">
-<img src="assets/pipeline.png" width="800px">
+<img src="static/images/pipeline.png" width="800px">
 </div>
 <br>
 

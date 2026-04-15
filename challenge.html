@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="AgentSearchBench Challenge">
+  <meta name="keywords" content="AI Agents, Agent Search, Benchmark, Challenge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgentSearchBench – Challenge</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="index.html">
+        <span class="icon"><i class="fas fa-home"></i></span>
+        <span>Home</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AgentSearchBench</h1>
+          <h2 class="title is-3 publication-title">Challenge</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <div class="content has-text-justified">
+          <p>
+            This challenge is organized as part of the <a href="https://agent-search.github.io/agentsearch-sigir26/">AgentSearch workshop @ SIGIR 2026</a>.
+          </p>
+          <p>
+            The AgentSearchBench challenge aims to explore agent search in the wild by evaluating retrieval and reranking methods against execution-grounded performance signals.
+            Recent studies have shown that semantic similarity alone is insufficient for identifying high-performing agents.
+            Nevertheless, it remains unclear which retrieval approaches best capture true agent utility, which ranking signals most reliably predict execution performance, whether execution-aware signals can close the gap between semantic similarity and actual agent performance, and how well current methods generalise across diverse task types and agent providers.
+            This challenge will investigate these questions across nearly 10,000 real-world agents drawn from multiple providers.
+          </p>
+          <p>
+            The challenge consists of two tracks targeting retrieval and reranking.
+          </p>
+          <ul>
+            <li><strong>Track 1: Retrieval</strong> – This track focuses on developing methods for retrieving relevant agents from a large pool based on user queries.</li>
+            <li><strong>Track 2: Reranking</strong> – This track aims to improve the ranking of retrieved agents by incorporating execution-aware signals and other contextual information.</li>
+          </ul>
+        </div>
+
+        <br/>
+
+        <h3 class="title is-4">Files</h3>
+        <div class="content has-text-justified">
+          <p>We release the data for AgentSearchBench <a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Tasks/viewer/single-agent_task_query">tasks</a>, <a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Agents">agentbase</a>, and <a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Responses">raw agent responses</a>.</p>
+
+          <p>To download the validation set:</p>
+          <pre><code>from datasets import load_dataset 
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "single-agent_task_query", split="validation")
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "multi-agent_task_query", split="validation")
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "task_description", split="validation")</code></pre>
+                    
+          <p>To download the test set:</p>
+          <pre><code>from datasets import load_dataset 
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "single-agent_task_query", split="test")
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "multi-agent_task_query", split="test")
+ds = load_dataset("Arastun/AgentSearchBench-Tasks", "task_description", split="test")</code></pre>
+
+          Here is a brief description of dataset columns:
+          <ul>
+            <li><strong>id</strong>: Unique identifier for each task.</li>
+            <li><strong>task</strong>: Task content.</li>
+            <li><strong>labels</strong>: Binary retrieval labels.</li>
+            <li><strong>ranking_labels</strong>: Graded ranking labels.</li>
+            <li><strong>ref_agents</strong>: Reference agents used to generate the task.</li>
+            <li><strong>ref_subtasks</strong>: Associated subtasks (multi-agent task query and task description).</li>
+            <li><strong>rubric</strong>: Subtask selection rubric (task description only).</li>
+          </ul>
+
+        <p>To download the agentbase dataset:</p>
+        <pre><code>from datasets import load_dataset
+ds = load_dataset("Arastun/AgentSearchBench-Agents")
+df = pd.DataFrame(ds["agents"])</code></pre>
+
+        <p>Our benchmarking tasks were generated from execution traces from 2 of the available platforms. You <strong>MUST</strong> use the same version of the agentbase dataset for the challenge.</p>
+        <pre>active_platforms = ["agentainetwork", "openaiagents"]
+agentbase_executable_df = df[df["platform_name"].isin(active_platforms)]</pre>
+        </pre>
+
+        </div>
+
+        <h3 class="title is-4">Submission Instructions</h3>
+        <div class="content has-text-justified">
+          <p>
+            You will need to register your team when you are submitting your results using the following <a href="">Google Form</a>.
+            Participants will submit lists of relevant agent ids per query using a standard IR-style format. Teams may submit multiple runs, and reproducibility submissions are encouraged.
+          </p>
+
+          <h4>Retrieval Track Submission</h4>
+          <p> Binary relevance labels (0 or 1) should be provided for each task in the test set in a JSONL file.</p>
+<pre>{"q:0": {"agt:openaiagents:55dad6@v1.1": 1}}
+{"q:1": {"agt:openaiagents:b950b8@v1.1": 1, "agt:openaiagents:d40350@v1.1": 1, "agt:openaiagents:626021@v1.1": 1}}
+{"q:2": {"agt:agentainetwork:2d0fdc@v1.1": 1, "agt:openaiagents:011a48@v1.1": 1}}</pre>
+
+          <h4>Reranking Track Submission</h4>
+
+          <p> Graded ranking labels should be provided for each task in the test set in a JSONL file.
+            Our reranking track focuses on <strong>top 20</strong> agents per task.
+          </p>
+<pre>{"q:0": {"agt:openaiagents:55dad6@v1.1": 7, "agt:openaiagents:55dad6@v1.1": 6, ...}}
+{"q:1": {"agt:openaiagents:b950b8@v1.1": 10, "agt:openaiagents:d40350@v1.1": 5, "agt:openaiagents:626021@v1.1": 3, ...}}
+{"q:2": {"agt:agentainetwork:2d0fdc@v1.1": 3, "agt:openaiagents:011a48@v1.1": 2}, ...}</pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
