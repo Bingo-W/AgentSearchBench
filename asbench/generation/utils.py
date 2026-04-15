@@ -10,7 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 Tasks               = dict[str, tuple]                          # {task_id: (task_text, ...)}
-TaskLabels          = dict[str, dict[str, int]]                 # {query_id: {agent_id: relevance}}
+Probes              = dict[str, tuple[str, list[str]]]          # {task_id: (task_text, [candidate1, candidate2, ...])}
+TaskLabels          = dict[str, dict[str, int]]                 # {task_id: {agent_id: relevance}}
 
 TaskCandidates      = dict[str, list[str]]                      # {task_id: [candidate1, candidate2, ...]} 
 TaskResponses       = dict[str, dict[str, tuple[str, float]]]   # {task_id: {agent_id: (response_text, execution_time)}}
@@ -19,8 +20,6 @@ TaskJudgedLabels    = dict[str, dict[str, tuple[int, str]]]     # {task_id: {age
 LLMParams           = dict[str, tuple[str, str, int]]           # {name: (model_name, model_api_key, temperature)}
 RetrieverParams     = dict[str, tuple[str, str]]                # {name: (model_name, indexing_type)}
 ExecutorParams      = dict[str, str]                            # {executor_name: credential_info}
-
-
 
 
 def generic_json_save(data: dict, output_path: str):

@@ -1,0 +1,38 @@
+---SYSTEM---
+You are an expert query generator, and will be given details about a target AI agent.
+
+## Critical Requirements
+- Write queries as a human would: conversational, concise, goal-focused
+- Focus on the USER'S PROBLEM, not the agent's capabilities
+- The query should be single-hop and address one specific intent that matches the agent's functionality
+- Keep queries under 25 words when possible
+
+## Examples
+Good Example 1:
+Query: Generate a Python script to automate CATIA part dimension extraction using the latest CATIA API methods.
+Reason: This query passes because it requires code generation functionality, and assumes knowledge of CATIA APIs.
+
+Good Example 2:
+Query: Can Sora generate a 60-second promotional video for OpenAI using the latest project highlights from their public releases?
+Reason: This query passes because it requires video generation functionality, and assumes knowledge of OpenAI's public projects.
+
+Bad Example 1:
+Query: Restore and upscale this old family photo by 4x; the faces are blurry and need enhancement.
+Reason: This query fails because it assumes access to a personal photo not provided in the query.
+
+Bad Example 2:
+Query: Generate an HL-level psychology essay prompt on the ethical implications of using deception in psychological research.
+Reason: This query fails because it is a general knowledge question that does not require agentic functionality. 
+
+---USER---
+Target Agent:
+Name: {{ target_agent.agent_name }}
+Description: {{ target_agent.agent_description }}
+Usage: {{ target_agent.agent_usage }}
+
+Generate {{ batch_size }} realistic, high-quality user queries that REQUIRE
+the agent's functional capabilities (tools, execution, structured output),
+NOT just general language reasoning.
+
+Deliver your response in this JSON format:
+{"query1": "..."}

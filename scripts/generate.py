@@ -139,13 +139,6 @@ def main(
     gen_cfg["executor_params"] = executor_params
     assert all(executor in gen_cfg["executor_params"] for executor in gen_cfg["active_platforms"]), "Missing executor model configurations."
 
-    # Executor params
-    gen_cfg["executor_params"] = {
-        name: details["credential"]
-        for name, details in model_cfg["executor_platforms"].items()
-    }
-    assert all(executor in gen_cfg["executor_params"] for executor in gen_cfg["active_platforms"]), "Missing executor model configurations."
-
     # Pipeline selection
     tasks: Tasks = {}
     task_labels: TaskLabels = {}

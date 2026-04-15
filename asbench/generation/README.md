@@ -11,9 +11,9 @@ We provide examples on how to run each task type using the full pipeline.
 ### Single-Agent Task Query
 
 ```bash
-python -m scripts.generate \
+uv run python -m scripts.generate \
     --type single \
-    --agentbase asbench/data/agentbase-v1.1.csv \
+    --agentbase asbench/data/agentbase.csv \
     --generate_labels True \
     --debug True \
     --experiment-name tq-single-agent
@@ -30,9 +30,9 @@ First prepare a task file from an existing benchmark you want to use as part of 
 Reference this filepath when running the pipeline:
 
 ```bash
-python -m scripts.generate \
+uv run python -m scripts.generate \
     --type real \
-    --agentbase asbench/data/agentbase-v1.1.csv \
+    --agentbase asbench/data/agentbase.csv \
     --source-tasks asbench/data/examples/gaia.jsonl \
     --generate_labels True \
     --debug True \
@@ -44,9 +44,9 @@ python -m scripts.generate \
 Multi-agent task query re-use existing single-agent task query. You should reference filepath to single-agent task query files. We recommend running single-agent pipeline first with `generate_labels` and `debug` set to `True`. An example is provided at [here](../data/examples).
 
 ```bash
-python -m scripts.generate \
+uv run python -m scripts.generate \
     --type multi \
-    --agentbase asbench/data/agentbase-v1.1.csv \
+    --agentbase asbench/data/agentbase.csv \
     --source-tasks asbench/data/examples/task_query_single_tasks.jsonl \
     --generate_labels True \
     --debug True \
@@ -56,15 +56,15 @@ python -m scripts.generate \
 ### Task Description
 
 ```bash
-python -m scripts.generate \
+uv run python -m scripts.generate \
     --type description \
-    --agentbase asbench/data/agentbase-v1.1.csv \
+    --agentbase asbench/data/agentbase.csv \
     --generate_labels True \
     --debug True \
     --experiment-name td
 ```
 
-Note that for our default runs we set `n_subtasks=10` and `n_candidates=20`, totalling 200 agents executions required per generated task description. This makes task description at-scale generation time-consuming and costly.
+Note that for our default runs we set `n_subtasks=10` and `n_candidates=20`, totalling 200 agents executions required per generated task description. This makes task description generation at-scale time-consuming and costly.
 
 ## Options
 
@@ -178,3 +178,25 @@ Platforms used for agent response generation, referenced by `active_platforms` i
 |---|---|
 | `agentainetwork` | `AGENT_AI_NETWORK_KEY` (env variable) |
 | `openaiagents` | `session.json` (session file path) |
+
+
+## CodeBase Task Formatting
+
+The CodeBase follows a JSONL format for task generation and probing:
+
+```python
+Tasks = dict[str, tuple]
+# {task_id: (task_text, ...)}
+Probes = dict[str, tuple[str, list[str]]]
+# {task_id: (task_text, [agent_id1, agent_id2, ...])}
+TaskLabels = dict[str, dict[str, int]]
+# {task_id: {agent_id: relevance}}
+TaskCandidates = dict[str, list[str]]
+# {task_id: [agent_id1, agent_id2, ...]}
+TaskResponses = dict[str, dict[str, tuple[str, float]]]
+# {task_id: {agent_id: (response_text, execution_time)}}
+TaskJudgedLabels = dict[str, dict[str, tuple[int, str]]]
+# {task_id: {agent_id: (score, reasoning)}}
+```
+
+For further information [see utilities](utils.py).

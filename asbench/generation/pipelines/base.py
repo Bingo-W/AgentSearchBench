@@ -2,6 +2,7 @@
 
 from abc import ABC, abstractmethod
 import logging
+from pathlib import Path
 from asbench.generation.utils import (
     Tasks, TaskLabels,
     TaskCandidates, TaskJudgedLabels, TaskResponses,
@@ -28,7 +29,7 @@ class BasePipeline(ABC):
         task_labels: TaskLabels,
         experiment_name: str,
     ):
-        output_dir = f"outputs/{experiment_name}"
+        output_dir = Path(__file__).parent.parent.parent.parent / f"outputs/{experiment_name}"
         generic_jsonl_save(tasks, f"{output_dir}/tasks.jsonl")
         generic_jsonl_save(task_labels, f"{output_dir}/task_labels.jsonl")
 
@@ -41,7 +42,7 @@ class BasePipeline(ABC):
         responses: TaskResponses,
         experiment_name: str,
     ):
-        output_dir = f"outputs/{experiment_name}/debug"
+        output_dir = Path(__file__).parent.parent.parent.parent / f"outputs/{experiment_name}/debug"
         
         if task_rank_labels:
             generic_jsonl_save(task_rank_labels, f"{output_dir}/task_rank_labels.jsonl")

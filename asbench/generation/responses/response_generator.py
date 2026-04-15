@@ -17,7 +17,6 @@ class ResponseGenerator:
         corpus: pd.DataFrame,
         executor_params: dict,
         response_path: str,
-        probing: bool=False, # generation pipeline or online probing?
     ):
         self.corpus = corpus
         self.tasks = {}
@@ -27,7 +26,6 @@ class ResponseGenerator:
 
         self.executor_params = executor_params
         self.executors: dict[str, PlatformExecutor] = {}
-        self.probing = probing
         # pre-emptive measure against uncaught system-wide erros, avoids polluting response data
         self.ERROR_LIMIT = 20
 
@@ -41,7 +39,6 @@ class ResponseGenerator:
         self.tasks = tasks
         self.candidates = candidates
         self.responses = {}
-        pending_responses = {}
         error_count = 0
 
         # due to platform dependencies, group tasks by platform
@@ -52,7 +49,7 @@ class ResponseGenerator:
         try:
             for qid, tasks in platform_tasks.items():
                 self.responses[qid] = {}
-                if not self.probing: logger.info(f"Processing {qid} with {len(tasks)} candidate agents...", extra={"importance": "high"})
+                logger.info(f"Processing {qid} with {len(tasks)} candidate agents...", extra={"importance": "high"})
             
                 for agent_id, platform_name in tasks:
                     if error_count >= self.ERROR_LIMIT:
@@ -75,11 +72,10 @@ class ResponseGenerator:
                     )
                     error_count = error_count + 1 if status_code >= 400 else 0
                     self.responses[qid][agent_id] = (response, execution_time)
-                    pending_responses[agent_id] = (response, execution_time)
                     time.sleep(1)
         
         finally:
-            if not (no_exit or self.probing):
+            if not no_exit:
                 self._cleanup_executors()
         return self.responses
 
@@ -97,7 +93,7 @@ class ResponseGenerator:
     def _initialize_executors(self, platform_names: list[str]):
         for platform_name in platform_names:
             credential = self.executor_params.get(platform_name)
-            params = {"credential": credential, "debug": not self.probing}
+            params = {"credential": credential, "debug": True}
 
             logger.info(f"Initializing executor for {platform_name}...")
             executor = ExecutorFactory.create_executor(

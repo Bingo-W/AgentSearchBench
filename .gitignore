@@ -2,6 +2,7 @@
 asbench/data/embeddings/*
 asbench/data/agentbase*_executable.csv
 outputs/*
+*.DS_Store*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

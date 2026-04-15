@@ -3,7 +3,7 @@
 import logging
 
 from asbench.generation.inference import LLMInference
-from asbench.generation.prompts import JUDGE_TASK_PROMPT, JUDGE_TASK_MULTIAXIS_PROMPT
+from asbench.generation.prompts import JUDGE_TASK_PROMPT
 from asbench.generation.utils import extract_json
 
 
