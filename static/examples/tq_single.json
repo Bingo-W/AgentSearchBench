@@ -1,0 +1,42 @@
+{
+    "id": "q:38",
+    "task": "I have a headache, stiff neck, and fever since last night—can you triage me with a red-flag checklist and tell me whether I should go to urgent care or ER today?",
+    "labels": {
+        "agt:openaiagents:cb7df5@v1.1": 1,
+        "agt:openaiagents:bcaf89@v1.1": 1,
+        "agt:openaiagents:a77e03@v1.1": 1,
+        "agt:openaiagents:659375@v1.1": 1,
+        "agt:openaiagents:27b7a3@v1.1": 1,
+        "agt:openaiagents:5b3377@v1.1": 1,
+        "agt:openaiagents:18f6b7@v1.1": 1,
+        "agt:openaiagents:1b2789@v1.1": 1,
+        "agt:openaiagents:9334dd@v1.1": 1,
+        "agt:openaiagents:07ec7b@v1.1": 1,
+        "agt:openaiagents:9ff0b0@v1.1": 1,
+        "agt:openaiagents:673673@v1.1": 1, 
+        "agt:openaiagents:040847@v1.1": 1,
+        "agt:openaiagents:5b3d0f@v1.1": 1
+    },
+    "ranking_labels": {
+        "agt:openaiagents:cb7df5@v1.1": 1,
+        "agt:openaiagents:bcaf89@v1.1": 1,
+        "agt:openaiagents:a77e03@v1.1": 1,
+        "agt:openaiagents:659375@v1.1": 1,
+        "agt:openaiagents:27b7a3@v1.1": 1,
+        "agt:openaiagents:5b3377@v1.1": 1,
+        "agt:openaiagents:18f6b7@v1.1": 1,
+        "agt:openaiagents:1b2789@v1.1": 1,
+        "agt:openaiagents:9334dd@v1.1": 1,
+        "agt:openaiagents:07ec7b@v1.1": 1,
+        "agt:openaiagents:9ff0b0@v1.1": 1,
+        "agt:openaiagents:673673@v1.1": 1,
+        "agt:openaiagents:040847@v1.1": 1,
+        "agt:openaiagents:5b3d0f@v1.1": 1,
+        "agt:openaiagents:78e16d@v1.1": 0,
+        "agt:agentainetwork:083a0a@v1.1": 0,
+        "agt:agentainetwork:17a033@v1.1": 0,
+        "agt:openaiagents:7760cd@v1.1": 0,
+        "agt:agentainetwork:523a3e@v1.1": 0,
+        "agt:openaiagents:c25b6d@v1.1": 0
+    }
+}

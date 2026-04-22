@@ -1,0 +1,15 @@
+[
+  ["#", "Model", "NDCG@5", "NDCG@20", "Completeness@5"],
+  [1, "Random Shuffle*", 48.27, 76.60, 0.00],
+  [2, "MiniLM-L12 v2", 57.49, 81.58, 0.00],
+  [3, "MXBAI Reranker Large", 61.33, 82.22, 0.48],
+  [4, "BGE Reranker v2", 60.55, 81.97, 0.96],
+  [5, "Tool-Rank 4B", 61.12, 82.32, 0.48],
+  [6, "Tool-Rank 8B", 61.97, 82.76, 0.96],
+  [7, "MonoT5 Base MS-Marco", 59.10, 81.33, 0.96],
+  [8, "Qwen Reranker 0.6B", 60.47, 82.04, 0.48],
+  [9, "Qwen Reranker 4B", 60.58, 82.84, 0.00],
+  [10, "RankGPT Qwen-3 32B", 60.78, 82.36, 0.48],
+  [11, "RankGPT LLaMA-3.3 70B", 61.24, 82.34, 0.96],
+  [12, "RankGPT GPT-5.2", 64.66, 84.69, 0.00]
+]

@@ -1,0 +1,11 @@
+{
+    "id": "q:0_agt:openaiagents:9ff0b0@v1.1",
+    "task": "Draft a legally compliant performance improvement plan (PIP) and termination checklist for an underperforming salaried customer-support employee in Jaipur, Rajasthan, India, at a 60-person tech company. Include scripts, a 30/60/90-day timeline, and documentation templates for meetings, warnings, and final separation.",
+    "agent_id": "agt:openaiagents:9ff0b0@v1.1",
+    "response": {
+        "Text": "Below is a practical India-focused PIP and separation pack for a Jaipur, Rajasthan tech company. It is designed to be manager-usable and legally conservative, not aggressive.\n\nTwo important legal assumptions drive the format:\n\nIn Rajasthan, a shop/commercial-establishment employee with 6+ months ...",
+        "Images": null,
+        "Files": null
+    },
+    "time": "160.3321008682251"
+}

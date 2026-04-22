@@ -1,48 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="AgentSearchBench: A Benchmark for AI Agent Search in the Wild">
-  <meta name="keywords" content="AI Agents, Agent Search, Benchmark, Retrieval, Reranking, Execution Signals">
+  <meta name="description" content="A Benchmark for AI Agent Search in the Wild.">
+  <meta name="keywords" content="AgentSearch, AgentSearchBench, AI Agents, Agent Retrieval, Agent Reranking, Benchmark, Dataset">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AgentSearchBench</title>
+  <title> AgentSearchBench: A Benchmark for AI Agent Search in the Wild </title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <link rel="icon" href="static/images/icon.png">
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="./static/css/leaderboard.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
   <script type="text/javascript" src="static/js/sort-table.js" defer></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>
+  <script src="./static/js/leaderboard_tables.js"></script>
+  <style>
+    pre {
+        max-height: 400px; 
+        overflow-x: auto; 
+        overflow-y: auto;
+        background-color: #f0f0f0; 
+        padding: 10px;
+        border: 1px solid #ccc; 
+        text-align: left;
+    }
+</style>
+<script>
+  function loadJSON(file, elementId) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              document.getElementById(elementId).textContent = xhr.responseText;
+              hljs.highlightElement(document.getElementById(elementId));
+          }
+      };
+      xhr.open('GET', file, true);
+      xhr.send();
+  }
+
+  loadJSON('./static/examples/td.json', 'json1');
+  loadJSON('./static/examples/tq_single.json', 'json2');
+  loadJSON('./static/examples/tq_multi.json', 'json3');
+  loadJSON('./static/examples/agent.json', 'json4');
+  loadJSON('./static/examples/agent_response.json', 'json5');
+</script>
 </head>
+
 <body>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -55,29 +79,31 @@
   </div>
 </nav>
 
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">AgentSearchBench:</h1>
-          <h2 class="title is-1 publication-title">A Benchmark for AI Agent Search in the Wild</h2>
+          <h1 class="title is-1 publication-title">AgentSearchBench</h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            A Benchmark for AI Agent Search in the Wild
+          </h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="">Arastun Mammadli</a><sup></sup>,</span>
+              <a href="https://bingo-w.github.io/">Bin Wu<sup>*</sup></a>,</span>
             <span class="author-block">
-              <a href="">Bin Wu</a><sup></sup>,</span>
+              <a href="https://www.linkedin.com/in/arastun-mammadli-068ab0228/">Arastun Mammadli<sup>*</sup></a>,</span>
             <span class="author-block">
-              <a href="">Xiaoyu Zhang</a><sup></sup>,
+              <a href="https://scholar.google.com/citations?user=pf5Q3JAAAAAJ&hl=en">Xiaoyu Zhang</a><sup></sup>,
             </span>
             <span class="author-block">
-              <a href="">Emine Yilmaz</a><sup></sup>
+              <a href="https://sites.google.com/site/emineyilmaz/?pli=1">Emine Yilmaz</a><sup></sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup></sup>University College London, AI Centre</span>
+            <span class="author-block"><sup></sup>University College London, AI Centre</span><br>
+            <span class="author-block">* Equal Contribution</span><br>
           </div>
 
           <div class="column has-text-centered">
@@ -110,7 +136,7 @@
                       <!-- <i class="far fa-images"></i> -->
                       <p style="font-size:18px">🤗</p>
                   </span>
-                  <span>Data</span>
+                  <span>Dataset</span>
                   </a>
                 </span>
               <!-- Leaderboard Link. -->
@@ -126,7 +152,7 @@
                 </span>
               <!-- Challenge Link. -->
               <span class="link-block">
-                <a href="challenge.html"
+                <a href="https://agent-search.github.io/agentsearch-challenge/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <!-- <i class="fas fa-flag"></i> -->
@@ -144,24 +170,22 @@
   </div>
 </section>
 
-<!--/ Abstract. -->
+<!--/ Introduction. -->
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container">
     <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+
+        <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            The rapid growth of AI agent ecosystems is transforming how complex tasks are delegated and executed, creating a new challenge of identifying suitable agents for a given task. 
-            Unlike traditional tools, agent capabilities are often compositional and execution-dependent, making them difficult to assess from textual descriptions alone. However, existing research and benchmarks typically assume well-specified functionalities, controlled candidate pools, or only executable task queries, leaving realistic agent search scenarios insufficiently studied. 
+            We introduce AgentSearchBench: a large-scale benchmark for agent search built from nearly 10,000 real-world agents sourced from public platforms including the <a href="https://chatgpt.com/gpts">GPT Store</a>, <a href="https://cloud.google.com/marketplace">Google Cloud Marketplace</a>, and <a href="https://agent.ai/">AgentAI Platform</a>. By drawing from real ecosystems, the benchmark captures practical challenges such as capability overlap and inconsistent documentation. It formalizes agent search as retrieval and reranking problems under both executable task queries and high-level task descriptions, where the agent relevance assessed through execution-grounded performance signals rather than textual similarity.
           </p>
           <p>
-            We introduce AgentSearchBench, a large-scale benchmark for agent search in the wild, built from nearly 10,000 real-world agents across multiple providers. 
-            The benchmark formalizes agent search as retrieval and reranking problems under both executable task queries and high-level task descriptions, and evaluates relevance using execution-grounded performance signals. 
-            Experiments reveal a consistent gap between semantic similarity and actual agent performance, exposing the limitations of description-based retrieval and reranking methods. 
-          </p>
-          <p>
-            We further show that lightweight behavioral signals, including execution-aware probing, can substantially improve ranking quality, highlighting the importance of incorporating execution signals into agent discovery.
+            Tasks are generated by first creating concrete, executable queries from agent documentation, then grouping and abstracting these into broader high-level descriptions. 
+            We ground the relevance in real performance by executing candidate agents on each task and evaluating their outputs via an LLM Judge.
+            Multiple quality controls ensure benchmark reliability, including task filtering and judge-to-human alignment validation.
           </p>
         </div>
       </div>
@@ -169,28 +193,89 @@
   </div>
 </section>
 
+<br>
+<br>
+
+<section class="hero is-light is-small" id="dataset">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2 mathvista">
+      <span class="mathvista" style="vertical-align: middle">AgentSearchBench Dataset</span>
+    </h1>
+  </div>
+</section>
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <!-- Dataset. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width" id="dataset">
-        <h2 class="title is-3">Dataset</h2>
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+      <div class="column is-four-fifths">
 
         <!-- Dataset Introduction. -->
         <div class="content has-text-justified">
           <p>
-            We crawl ~10,000 real-world AI Agents from GPT Store, Google Cloud Marketplace, and AgentAI Platform to build AgentBase.
-            Subsequently, we generate a total of 3685 Task Query and 324 Task Description. Here is an overview of our pipeline design:
+            In total, we crawl <strong>9,759</strong> real-world AI Agents. Using them we build a validation set of <strong>3,211</strong> tasks and a test set of <strong>798</strong> tasks, spanning single-agent queries, multi-agent queries, and high-level task descriptions.
           </p>
-        </div>
-        <div class="column has-text-centered">
-          <img src="./static/images/pipeline.png"
-                class="interpolation-image"
-                alt="Interpolate start reference image."/>
-          <p>AgentSearchBench Task and Label Generation</p>
-        </div>
-        <br/>
+
+          <table>
+          <thead>
+            <tr>
+              <th>Split</th>
+              <th>Total</th>
+              <th>Task Description</th>
+              <th>Single-Agent Task Query</th>
+              <th>Multi-Agent Task Query</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Validation</td>
+              <td>3,211</td>
+              <td>259</td>
+              <td>2,452</td>
+              <td>500</td>
+            </tr>
+            <tr>
+              <td>Test</td>
+              <td>798</td>
+              <td>65</td>
+              <td>633</td>
+              <td>100</td>
+            </tr>
+          </tbody>
+          </table>
+
+          <div class="column is-full has-text-centered content">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="box">
+                <div class="content has-text-centered">
+                  <img src="static/images/statistics/task_diversity.png" alt="grade-lv" height="100" />
+                  <p>Snapshot of Topics Covered by Task Description.
+                  </p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="content has-text-centered">
+                  <img src="static/images/statistics/agent_diversity.png" alt="grade-lv" height="100" />
+                  <p>Agent Diversity of AgentBase Dataset.
+                  </p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="content has-text-centered">
+                  <img src="static/images/statistics/relevant_agents.png" alt="grade-lv" height="100" />
+                  <p>Number of Relevant Agents Per Different Task Types.
+                  </p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="content has-text-centered">
+                  <img src="static/images/statistics/ranking_label_entropy_distribution.png" alt="grade-lv" height="100" />
+                  <p>Agent Performance (Score Entropy) Across Different Task Types.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <!-- Dataset Download. -->
         <h3 class="title is-4">Downloading the Dataset</h3>
@@ -199,482 +284,165 @@
             We release the AgentBase dataset, the benchmark tasks (validation and test splits), and over 60K raw agent responses.
 
             <ul>
-              <li><strong><a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Tasks/viewer/single-agent_task_query">AgentSearchBench-Tasks</a></strong>: benchmark tasks.</li>
-              <li><strong><a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Agents">AgentSearchBench-Agents</a></strong>: AgentBase dataset.</li>
-              <li><strong><a href="https://huggingface.co/datasets/Arastun/AgentSearchBench-Responses">AgentSearchBench-Responses</a></strong>: raw agent executions from the validation set.</li>
+              <li><strong><a href="https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Tasks">AgentSearchBench-Tasks</a></strong>: benchmark tasks.</li>
+              <li><strong><a href="https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Agents">AgentSearchBench-Agents</a></strong>: AgentBase dataset.</li>
+              <li><strong><a href="https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Responses">AgentSearchBench-Responses</a></strong>: raw agent executions from the validation set.</li>
             </ul>
 
-            Alternatively, you can access the data from <a href="">Google Drive</a>.
+            Alternatively, you can access the data from <a href="https://drive.google.com/drive/folders/1821MfvwzCsTH22IkWwApnkkoeUz9UVTa?usp=sharing">Google Drive</a>.
           </p>
-        </div>
-      </div>
-    </div>
 
-    <!-- Leaderboard. -->
-    <div class="columns is-centered">
-      <div class="column is-full" id="leaderboard">
-        <h2 class="title is-3">Leaderboard</h2>
-          <div class="content has-text-centered">
-
-          <p class="mt-3">Task Description <strong>Reranking</strong> Results.</p>
-
-          <div id="testmini_leaderboard"></div>
-
-          <table class="js-sort-table" id="results">
-            <tr>
-              <td class="js-sort-number"><strong>#</strong></td>
-              <td class="js-sort-number"><strong>Model</strong></td>
-              <td class="js-sort-number"><strong>NDCG@5</strong></td>
-              <td class="js-sort-number"><strong>NDCG@20</strong></td>
-              <td class="js-sort-number"><strong>Completeness@5</strong></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><b>Random Shuffle*</b></td>
-              <td>48.27</td>
-              <td>76.60</td>
-              <td>0.00</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><b>MiniLM-L12 v2</b></td>
-              <td>57.49</td>
-              <td>81.58</td>
-              <td>0.00</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><b>MXBAI Reranker Large</b></td>
-              <td>61.33</td>
-              <td>82.22</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><b>BGE Reranker v2</b></td>
-              <td>60.55</td>
-              <td>81.97</td>
-              <td>0.96</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><b>Tool-Rank 4B</b></td>
-              <td>61.12</td>
-              <td>82.32</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><b>Tool-Rank 8B</b></td>
-              <td>61.97</td>
-              <td>82.76</td>
-              <td>0.96</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td><b>MonoT5 Base MS-Marco</b></td>
-              <td>59.10</td>
-              <td>81.33</td>
-              <td>0.96</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td><b>Qwen Reranker 0.6B</b></td>
-              <td>60.47</td>
-              <td>82.04</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td><b>Qwen Reranker 4B</b></td>
-              <td>60.58</td>
-              <td>82.84</td>
-              <td>0.00</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><b>RankGPT Qwen-3 32B</b></td>
-              <td>60.78</td>
-              <td>82.36</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td><b>RankGPT LLaMA-3.3 70B</b></td>
-              <td>61.24</td>
-              <td>82.34</td>
-              <td>0.96</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td><b>RankGPT GPT-5.2</b></td>
-              <td>64.66</td>
-              <td>84.69</td>
-              <td>0.00</td>
-            </tr>
-          </table>
-          <p class="mt-3">Task Query <strong>Reranking</strong> Results.</p>
-
-          <div id="testmini_leaderboard"></div>
-
-          <table class="js-sort-table" id="results">
-            <tr>
-              <td class="js-sort-number"><strong>#</strong></td>
-              <td class="js-sort-number"><strong>Model</strong></td>
-              <td class="js-sort-number"><strong>NDCG@5</strong></td>
-              <td class="js-sort-number"><strong>NDCG@20</strong></td>
-              <td class="js-sort-number"><strong>Completeness@5</strong></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><b>Random Shuffle*</b></td>
-              <td>50.98</td>
-              <td>74.61</td>
-              <td>61.00</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><b>MiniLM-L12 v2</b></td>
-              <td>48.06</td>
-              <td>73.53</td>
-              <td>52.00</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><b>MXBAI Reranker Large</b></td>
-              <td>53.42</td>
-              <td>76.32</td>
-              <td>58.00</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><b>BGE Reranker v2</b></td>
-              <td>59.84</td>
-              <td>79.59</td>
-              <td>59.00</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><b>Tool-Rank 4B</b></td>
-              <td>64.45</td>
-              <td>81.78</td>
-              <td>59.50</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><b>Tool-Rank 8B</b></td>
-              <td>64.36</td>
-              <td>81.96</td>
-              <td>60.00</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td><b>MonoT5 Base MS-Marco</b></td>
-              <td>57.37</td>
-              <td>78.69</td>
-              <td>60.00</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td><b>Qwen Reranker 0.6B</b></td>
-              <td>63.72</td>
-              <td>81.08</td>
-              <td>58.50</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td><b>Qwen Reranker 4B</b></td>
-              <td>64.53</td>
-              <td>81.97</td>
-              <td>62.50</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><b>RankGPT Qwen-3 32B</b></td>
-              <td>61.05</td>
-              <td>80.18</td>
-              <td>58.50</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td><b>RankGPT LLaMA-3.3 70B</b></td>
-              <td>59.92</td>
-              <td>79.80</td>
-              <td>53.50</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td><b>RankGPT GPT-5.2</b></td>
-              <td>64.57</td>
-              <td>81.88</td>
-              <td>56.50</td>
-            </tr>
-          </table>
-
-          <p class="mt-3">Task Description <strong>Retrieval</strong> Results.</p>
-
-          <div id="testmini_leaderboard"></div>
-
-          <table class="js-sort-table" id="results">
-            <tr>
-              <td class="js-sort-number"><strong>#</strong></td>
-              <td class="js-sort-number"><strong>Model</strong></td>
-              <td class="js-sort-number"><strong>NDCG@20</strong></td>
-              <td class="js-sort-number"><strong>Precision@20</strong></td>
-              <td class="js-sort-number"><strong>Recall@20</strong></td>
-              <td class="js-sort-number"><strong>Completeness@20</strong></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><b>SPLADE v2</b></td>
-              <td>6.93</td>
-              <td>6.11</td>
-              <td>2.49</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><b>BM25</b></td>
-              <td>10.78</td>
-              <td>9.25</td>
-              <td>3.69</td>
-              <td>0.48</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><b>ColBERT v2</b></td>
-              <td>12.80</td>
-              <td>12.19</td>
-              <td>5.12</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><b>Contriever MS-Marco</b></td>
-              <td>14.22</td>
-              <td>13.37</td>
-              <td>5.70</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><b>GTR-T5 Base</b></td>
-              <td>12.96</td>
-              <td>11.92</td>
-              <td>4.93</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><b>MiniLM-L6 v2</b></td>
-              <td>15.84</td>
-              <td>14.57</td>
-              <td>6.24</td>
-              <td>1.44</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td><b>BGE-Large v1.5</b></td>
-              <td>16.07</td>
-              <td>14.40</td>
-              <td>6.12</td>
-              <td>3.37</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td><b>COLT ToolLens</b></td>
-              <td>8.60</td>
-              <td>7.88</td>
-              <td>3.47</td>
-              <td>0.96</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td><b>COLT ToolBench</b></td>
-              <td>11.57</td>
-              <td>10.84</td>
-              <td>4.53</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><b>Tool-Embed</b></td>
-              <td>17.19</td>
-              <td>15.94</td>
-              <td>6.41</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td><b>ToolRet</b></td>
-              <td>17.21</td>
-              <td>15.77</td>
-              <td>6.69</td>
-              <td>3.37</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td><b>E5-Mistral 7B</b></td>
-              <td>11.56</td>
-              <td>10.22</td>
-              <td>4.58</td>
-              <td>1.92</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td><b>Qwen-Embedding 8B</b></td>
-              <td>16.51</td>
-              <td>15.29</td>
-              <td>6.15</td>
-              <td>2.40</td>
-            </tr>
-          </table>
-
-          <p class="mt-3">Task Query <strong>Retrieval</strong> Results.</p>
-
-          <div id="testmini_leaderboard"></div>
-
-          <table class="js-sort-table" id="results">
-            <tr>
-              <td class="js-sort-number"><strong>#</strong></td>
-              <td class="js-sort-number"><strong>Model</strong></td>
-              <td class="js-sort-number"><strong>NDCG@20</strong></td>
-              <td class="js-sort-number"><strong>Precision@20</strong></td>
-              <td class="js-sort-number"><strong>Recall@20</strong></td>
-              <td class="js-sort-number"><strong>Completeness@20</strong></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><b>SPLADE v2</b></td>
-              <td>3.48</td>
-              <td>2.29</td>
-              <td>3.72</td>
-              <td>18.93</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><b>BM25</b></td>
-              <td>22.68</td>
-              <td>14.07</td>
-              <td>21.36</td>
-              <td>51.38</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><b>ColBERT v2</b></td>
-              <td>20.47</td>
-              <td>13.44</td>
-              <td>19.68</td>
-              <td>43.95</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><b>Contriever MS-Marco</b></td>
-              <td>16.72</td>
-              <td>11.12</td>
-              <td>17.07</td>
-              <td>45.11</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><b>GTR-T5 Base</b></td>
-              <td>17.55</td>
-              <td>11.51</td>
-              <td>16.92</td>
-              <td>44.63</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><b>MiniLM-L6 v2</b></td>
-              <td>22.46</td>
-              <td>14.97</td>
-              <td>21.33</td>
-              <td>51.52</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td><b>BGE-Large v1.5</b></td>
-              <td>26.14</td>
-              <td>17.64</td>
-              <td>25.49</td>
-              <td>52.52</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td><b>COLT ToolLens</b></td>
-              <td>7.91</td>
-              <td>5.47</td>
-              <td>7.85</td>
-              <td>30.61</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td><b>COLT ToolBench</b></td>
-              <td>12.28</td>
-              <td>8.00</td>
-              <td>12.13</td>
-              <td>38.66</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><b>Tool-Embed</b></td>
-              <td>25.67</td>
-              <td>17.23</td>
-              <td>24.46</td>
-              <td>53.91</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td><b>ToolRet</b></td>
-              <td>28.87</td>
-              <td>19.36</td>
-              <td>27.80</td>
-              <td>57.53</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td><b>E5-Mistral 7B</b></td>
-              <td>15.29</td>
-              <td>9.77</td>
-              <td>15.62</td>
-              <td>44.49</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td><b>Qwen-Embedding 8B</b></td>
-              <td>21.43</td>
-              <td>14.83</td>
-              <td>21.14</td>
-              <td>48.33</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Related Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Papers</h2>
-
-        <div class="content has-text-justified">
           <p>
-            The following papers are related to the AgentSearchBench:
+            Here are some examples from the validation set:
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <pre><code class="json" id="json1"></code></pre>
+                  <p> Task Description (AgentSearchBench-Tasks) </p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <pre><code class="json" id="json2"></code></pre>
+                  <p> Single-Agent Task Query (AgentSearchBench-Tasks) </p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <pre><code class="json" id="json3"></code></pre>
+                  <p> Multi-Agent Task Query (AgentSearchBench-Tasks) </p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <pre><code class="json" id="json4"></code></pre>
+                  <p> Sample Agent from GPT Store (AgentSearchBench-Agents) </p>
+                </div>
+              </div>
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <pre><code class="json" id="json5"></code></pre>
+                  <p> Sample Agent Response (AgentSearchBench-Responses) </p>
+                </div>
+              </div>
+            </div>
           </p>
-          <ul>
-            <li><a href="https://arxiv.org/abs/2307.16789">ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs</a></li>
-            <li><a href="https://arxiv.org/pdf/2503.01763">Retrieval Models Aren't Tool-Savvy: Benchmarking Tool Retrieval for Large Language Models</a></li>
-            <li><a href="https://aclanthology.org/2025.findings-acl.1149.pdf">A Joint Optimization Framework for Enhancing Efficiency of Tool Utilization in LLM Agents</a></li>
-            <li><a href="https://trec-mllm.github.io/">TREC 2025: Million LLMs Track</a></li>
-            <li><a href="https://arxiv.org/pdf/2410.06153">AgentSquare: Automatic LLM Agent Search in Modular Design Space</a></li>
-            <li><a href="https://arxiv.org/pdf/2510.16499">Automated Composition of Agents: A Knapsack Approach for Agentic Component Selection</a></li>
-          </ul>
-
+        </div>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
+  </div>
+</section>
 
+<section class="hero is-light is-small" id="leaderboard">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2 mathvista">
+      <span class="mathvista" style="vertical-align: middle">Leaderboard</span>
+    </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+      <div class="column is-four-fifths">
+        <!-- Leaderboard Filter -->
+        <div class="field is-grouped mb-4">
+          <div class="control">
+            <div class="select">
+              <select id="leaderboard-task-type">
+                <option value="retrieval">Retrieval</option>
+                <option value="reranking">Reranking</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <div class="select">
+              <select id="leaderboard-query-type">
+                <option value="tq">Task Query</option>
+                <option value="td">Task Description</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const selectElement = document.getElementById('leaderboard-task-type');
+            selectElement.value = 'reranking';  // Setting "Reranking" as the selected value
+            const querySelectElement = document.getElementById('leaderboard-query-type');
+            querySelectElement.value = 'td';  // Setting "Task Description" as the selected value
+          });
+        </script>
+
+        <!-- Leaderboard. -->
+        <div class="columns is-centered">
+          <div class="column is-full">
+              <div class="content has-text-centered">
+
+              <div id="table-td-reranking"></div>
+              <div id="table-tq-reranking"></div>
+              <div id="table-td-retrieval"></div>
+              <div id="table-tq-retrieval"></div>
+
+              <script>
+                function updateLeaderboardVisibility() {
+                  var taskType = document.getElementById('leaderboard-task-type').value;
+                  var queryType = document.getElementById('leaderboard-query-type').value;
+                  var activeId = 'table-' + queryType + '-' + taskType;
+                  ['table-td-reranking', 'table-tq-reranking', 'table-td-retrieval', 'table-tq-retrieval'].forEach(function(id) {
+                    document.getElementById(id).style.display = (id === activeId) ? '' : 'none';
+                  });
+                }
+                document.getElementById('leaderboard-task-type').addEventListener('change', updateLeaderboardVisibility);
+                document.getElementById('leaderboard-query-type').addEventListener('change', updateLeaderboardVisibility);
+                document.addEventListener('DOMContentLoaded', updateLeaderboardVisibility);
+              </script>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2 mathvista">
+      <span class="mathvista" style="vertical-align: middle">Related Papers</span>
+    </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+      <div class="column is-four-fifths">
+
+        <!-- Related Work. -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                The following papers are related to the AgentSearchBench:
+              </p>
+              <ul>
+                <li><a href="https://arxiv.org/abs/2307.16789">ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs</a></li>
+                <li><a href="https://arxiv.org/pdf/2503.01763">Retrieval Models Aren't Tool-Savvy: Benchmarking Tool Retrieval for Large Language Models</a></li>
+                <li><a href="https://aclanthology.org/2025.findings-acl.1149.pdf">A Joint Optimization Framework for Enhancing Efficiency of Tool Utilization in LLM Agents</a></li>
+                <li><a href="https://trec-mllm.github.io/">TREC 2025: Million LLMs Track</a></li>
+                <li><a href="https://arxiv.org/pdf/2410.06153">AgentSquare: Automatic LLM Agent Search in Modular Design Space</a></li>
+                <li><a href="https://arxiv.org/pdf/2510.16499">Automated Composition of Agents: A Knapsack Approach for Agentic Component Selection</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -686,7 +454,6 @@
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
@@ -695,7 +462,7 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
+            This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
@@ -706,4 +473,5 @@
 </footer>
 
 </body>
+
 </html>

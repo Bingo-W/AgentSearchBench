@@ -1,0 +1,48 @@
+{
+    "id": "q:398",
+    "task": "I'm trying to launch a portfolio website in 6 weeks—can you break the work into weekly tasks scheduled on weekdays from 7–8pm and include a progress tracker—and also build a Streamlit stock dashboard with live price fetching, interactive charts, caching, and clear deployment steps, including a complete repo structure and runnable code?",
+    "ref_agents": [
+        "agt:agentainetwork:09e2f4@v1.1 (Goal-Oriented Planner)",
+        "agt:openaiagents:4a7c53@v1.1 (CoderX)"
+    ],
+    "ref_subtasks": [
+        "Help me break my goal of launching a portfolio website in 6 weeks into weekly tasks and schedule them on weekdays 7–8pm, with a progress tracker.",
+        "Build a Streamlit stock dashboard with live price fetch, interactive charts, caching, and deploy steps; include complete repo structure and runnable code."
+    ],
+    "labels": {
+        "agt:openaiagents:35c1f1@v1.1": 1,
+        "agt:openaiagents:35eba3@v1.1": 1, 
+        "agt:openaiagents:db1654@v1.1": 1,
+        "agt:openaiagents:19dc47@v1.1": 1,
+        "agt:openaiagents:f89073@v1.1": 1,
+        "agt:agentainetwork:14ad66@v1.1": 1,
+        "agt:openaiagents:2f8ab8@v1.1": 1,
+        "agt:openaiagents:f33800@v1.1": 1,
+        "agt:openaiagents:e4bf77@v1.1": 1,
+        "agt:openaiagents:a1dcba@v1.1": 1,
+        "agt:openaiagents:5e65c9@v1.1": 1,
+        "agt:openaiagents:0f5f84@v1.1": 1
+    },
+    "ranking_labels": {
+        "agt:openaiagents:35c1f1@v1.1": 1,
+        "agt:openaiagents:db1654@v1.1": 1,
+        "agt:openaiagents:19dc47@v1.1": 1,
+        "agt:openaiagents:f89073@v1.1": 1,
+        "agt:openaiagents:f33800@v1.1": 1,
+        "agt:openaiagents:e4bf77@v1.1": 1,
+        "agt:openaiagents:7e11f6@v1.1": 1,
+        "agt:openaiagents:a1dcba@v1.1": 1, 
+        "agt:openaiagents:5e65c9@v1.1": 1,
+        "agt:openaiagents:1a0beb@v1.1": 1,
+        "agt:openaiagents:35eba3@v1.1": 0.5,
+        "agt:agentainetwork:14ad66@v1.1": 0.5,
+        "agt:openaiagents:2f8ab8@v1.1": 0.5,
+        "agt:openaiagents:9b54c6@v1.1": 0.5,
+        "agt:openaiagents:932c86@v1.1": 0.5,
+        "agt:openaiagents:0f5f84@v1.1": 0.5,
+        "agt:openaiagents:a1d0fd@v1.1": 0.5,
+        "agt:openaiagents:bc4f47@v1.1": 0,
+        "agt:agentainetwork:accd7d@v1.1": 0,
+        "agt:agentainetwork:2f10ce@v1.1": 0
+    }
+}

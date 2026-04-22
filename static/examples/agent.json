@@ -1,0 +1,29 @@
+{
+    "agent_id": "agt:openaiagents:2518c1@v1.1",
+    "platform_id": "plt:openaiagents",
+    "platform_name": "openaiagents",
+    "agent_name": "JAVA Code Guide",
+    "agent_description": "A JAVA Development Assistant focusing on coding standards and quality.",
+    "agent_category": "Developer Tools",
+    "agent_usage": {
+        "quick_start": [
+        "Explain JAVA exception handling standards.",
+        "How can I improve this MySQL query?",
+        "Review my JAVA code snippet.",
+        "What are the best practices for JAVA unit testing?"
+        ],
+        "input_mode": "multi-modal"
+    },
+    "usage_example": null,
+    "agent_url": "https://chatgpt.com/g/g-EYiFThMtQ",
+    "agent_accessibility": "free",
+    "agent_pricing": "Free",
+    "base_model": "GPT-5.2",
+    "update_time": "06-06-2025",
+    "misc": {
+        "gizmoId": "g-EYiFThMtQ",
+        "gpt_rating": 4.0,
+        "description": "JAVA Code Guide is an AI-powered bot that leverages advanced GPT technology to assist JAVA developers in writing clean, efficient, and high-quality code. With its extensive knowledge of JAVA best practices and coding standards, JAVA Code Guide offers valuable guidance on exception handling, code optimization, and unit testing. Whether you're a seasoned JAVA developer looking to refine your skills or a beginner seeking to learn from the best, JAVA Code Guide is an indispensable tool for anyone striving to write top-notch JAVA code.",
+        "chats": null
+    }
+}
