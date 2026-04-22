@@ -4,9 +4,9 @@
 
 <div align="center">
 
-  [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2503.01763)
-  ![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)
-  [![Website](https://img.shields.io/badge/Website-Live-4CAF50?style=for-the-badge&logo=google-chrome)]()
+  [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)]()
+  ![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)(https://github.com/Bingo-W/AgentSearchBench)
+  [![Website](https://img.shields.io/badge/Website-Live-4CAF50?style=for-the-badge&logo=google-chrome)](https://bingo-w.github.io/AgentSearchBench/)
   [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow?style=for-the-badge&logo=huggingface)](#data)
   [![Leaderboard](https://img.shields.io/badge/📊%20Leaderboard-View-orange?style=for-the-badge)](#leaderboard)
 
@@ -36,7 +36,7 @@ Here is an overview of the benchmark construction:
 
 <br>
 <div align="center">
-<img src="static/images/pipeline.png" width="800px">
+<img src="assets/pipeline.png" width="800px">
 </div>
 <br>
 
@@ -44,11 +44,11 @@ Here is an overview of the benchmark construction:
 
 Our data is released as a set of HuggingFace Datasets:
 
-- [AgentSearchBench-Tasks](https://huggingface.co/datasets/Arastun/AgentSearchBench-Tasks/viewer/single-agent_task_query): benchmark tasks.
-- [AgentSearchBench-Agents](https://huggingface.co/datasets/Arastun/AgentSearchBench-Agents): AgentBase dataset.
-- [AgentSearchBench-Responses](https://huggingface.co/datasets/Arastun/AgentSearchBench-Responses): raw agent executions from the validation set.
+- [AgentSearchBench-Tasks](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Tasks/viewer/single-agent_task_query): benchmark tasks.
+- [AgentSearchBench-Agents](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Agents): AgentBase dataset.
+- [AgentSearchBench-Responses](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Responses): raw agent executions from the validation set.
 
-Alternatively, you can access the data from [Google Drive]().
+Alternatively, you can access the data from [Google Drive](https://drive.google.com/drive/folders/1821MfvwzCsTH22IkWwApnkkoeUz9UVTa?usp=sharing).
 
 ## Leaderboard
 
@@ -56,7 +56,7 @@ Alternatively, you can access the data from [Google Drive]().
 
 | Rank | Model                     | NDCG@5 | NDCG@20 | Completeness@5 |
 |------|---------------------------|--------|----------|------------------|
-| 🥇 1 | **RankGPT GPT-5.2**       | **64.66** | **84.69** | 0.00             |
+| 🥇 1 | <ins>RankGPT GPT-5.2</ins>       | <ins>64.66</ins> | <ins>84.69</ins> | 0.00             |
 | 2    | Qwen Reranker 4B         | 60.58  | 82.84    | 0.00             |
 | 3    | Tool-Rank 8B             | 61.97  | 82.76    | 0.96             |
 | 4    | RankGPT Qwen-3 32B       | 60.78  | 82.36    | 0.48             |
@@ -74,7 +74,7 @@ Alternatively, you can access the data from [Google Drive]().
 
 | Rank | Model                     | NDCG@5 | NDCG@20 | Completeness@5 |
 |------|---------------------------|--------|----------|------------------|
-| 🥇 1 | **Qwen Reranker 4B**     | **64.53** | **81.97** | **62.50**        |
+| 🥇 1 | <ins>Qwen Reranker 4B</ins>     | <ins>64.53</ins> | <ins>81.97</ins> | <ins>62.50</ins>        |
 | 2    | Tool-Rank 8B             | 64.36  | 81.96    | 60.00            |
 | 3    | RankGPT GPT-5.2          | 64.57  | 81.88    | 56.50            |
 | 4    | Tool-Rank 4B             | 64.45  | 81.78    | 59.50            |
@@ -92,8 +92,8 @@ Alternatively, you can access the data from [Google Drive]().
 
 | Rank | Model                | NDCG@20 | Precision@20 | Recall@20 | Completeness@20 |
 |------|----------------------|---------|--------------|-----------|------------------|
-| 🥇 1 | **ToolRet**          | **17.21** |15.77   | **6.69**  | **3.37**         |
-| 2    | Tool-Embed           | 17.19   | **15.94**        | 6.41      | 1.92             |
+| 🥇 1 | <ins>ToolRet</ins>          | <ins>17.21</ins> |15.77   | <ins>6.69</ins>  | <ins>3.37</ins>         |
+| 2    | Tool-Embed           | 17.19   | <ins>15.94</ins>        | 6.41      | 1.92             |
 | 3    | Qwen-Embedding 8B    | 16.51   | 15.29        | 6.15      | 2.40             |
 | 4    | BGE-Large v1.5       | 16.07   | 14.40        | 6.12      | 3.37             |
 | 5    | MiniLM-L6 v2         | 15.84   | 14.57        | 6.24      | 1.44             |
@@ -110,7 +110,7 @@ Alternatively, you can access the data from [Google Drive]().
 
 | Rank | Model                | NDCG@20 | Precision@20 | Recall@20 | Completeness@20 |
 |------|----------------------|---------|--------------|-----------|------------------|
-| 🥇 1 | **ToolRet**          | **28.87** | **19.36**    | **27.80** | **57.53**        |
+| 🥇 1 | <ins>ToolRet</ins>          | <ins>28.87</ins> | <ins>19.36</ins>    | <ins>27.80</ins> | <ins>57.53</ins>        |
 | 2    | BGE-Large v1.5       | 26.14   | 17.64        | 25.49     | 52.52            |
 | 3    | Tool-Embed           | 25.67   | 17.23        | 24.46     | 53.91            |
 | 4    | BM25                 | 22.68   | 14.07        | 21.36     | 51.38            |
@@ -125,6 +125,8 @@ Alternatively, you can access the data from [Google Drive]().
 | 13   | SPLADE v2            | 3.48    | 2.29         | 3.72      | 18.93            |
 
 ## Task Generation
+
+> ⚠️ Prompts redacted until challenge completion to prevent data leakage. For more details, see [agentsearch challenge](https://agent-search.github.io/agentsearch-challenge/).
 
 To start with, follow the [installation steps](#requirements). See [generation](asbench/generation/README.md) for step-by-step details on how to generate each task type.
 
