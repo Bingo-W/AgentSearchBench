@@ -5,7 +5,7 @@
 <div align="center">
 
   [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)]()
-  ![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)(https://github.com/Bingo-W/AgentSearchBench)
+  [![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)](https://github.com/Bingo-W/AgentSearchBench)
   [![Website](https://img.shields.io/badge/Website-Live-4CAF50?style=for-the-badge&logo=google-chrome)](https://bingo-w.github.io/AgentSearchBench/)
   [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow?style=for-the-badge&logo=huggingface)](#data)
   [![Leaderboard](https://img.shields.io/badge/📊%20Leaderboard-View-orange?style=for-the-badge)](#leaderboard)
