@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["asbench*"]
+
+[project]
+name = "asbench"
+version = "0.1.0"
+description = "Research framework for routing queries between LLM models to optimize cost and performance"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv",
+    "click",
+    "numpy>=2.0.0",
+    "pandas>=2.0.0",
+    "torch",
+    "litellm",
+    "huggingface-hub",
+    "datasets",
+    "rank-bm25",
+    "sentence-transformers",
+    "pytrec-eval==0.5",
+    "playwright",
+    "streamlit",
+    "jinja2",
+]
+
+[project.scripts]
+
+
+[dependency-groups]
+dev = [
+    "pytest-cov>=7.1.0",
+]
+
+[tool.uv]
+package = true
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: Integration tests with real models (deselected by default)",
+    "slow: Slow tests that take >60 seconds",
+]
+addopts = "-m 'not integration'"
+testpaths = ["tests"]
