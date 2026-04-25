@@ -2,7 +2,8 @@
 asbench/data/embeddings/*
 asbench/data/agentbase*_executable.csv
 outputs/*
-.DS_store
+**/.DS_Store
+.DS_Store
 .idea
 
 # Byte-compiled / optimized / DLL files
