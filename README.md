@@ -4,7 +4,7 @@
 
 <div align="center">
 
-  [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)]()
+  [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv)](https://arxiv.org/abs/2604.22436)
   [![Project](https://img.shields.io/badge/Project-ASBench-blue?style=for-the-badge&logo=github)](https://github.com/Bingo-W/AgentSearchBench)
   [![Website](https://img.shields.io/badge/Website-Live-4CAF50?style=for-the-badge&logo=google-chrome)](https://bingo-w.github.io/AgentSearchBench/)
   [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow?style=for-the-badge&logo=huggingface)](#data)
@@ -232,6 +232,13 @@ uv run python -m scripts.load_dataset
 
 ## Citation
 
-```bash
-
+```bibtex
+@misc{wu2026agentsearchbench,
+      title={AgentSearchBench: A Benchmark for AI Agent Search in the Wild}, 
+      author={Bin Wu and Arastun Mammadli and Xiaoyu Zhang and Emine Yilmaz},
+      year={2026},
+      eprint={2604.22436},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+}
 ```
