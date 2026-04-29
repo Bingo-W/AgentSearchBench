@@ -1,15 +1,15 @@
 [
   ["#", "Model", "NDCG@5", "NDCG@20", "Completeness@5"],
-  [1, "Random Shuffle*", 50.98, 74.61, 61.00],
-  [2, "MiniLM-L12 v2", 48.06, 73.53, 52.00],
-  [3, "MXBAI Reranker Large", 53.42, 76.32, 58.00],
-  [4, "BGE Reranker v2", 59.84, 79.59, 59.00],
-  [5, "Tool-Rank 4B", 64.45, 81.78, 59.50],
-  [6, "Tool-Rank 8B", 64.36, 81.96, 60.00],
-  [7, "MonoT5 Base MS-Marco", 57.37, 78.69, 60.00],
-  [8, "Qwen Reranker 0.6B", 63.72, 81.08, 58.50],
-  [9, "Qwen Reranker 4B", 64.53, 81.97, 62.50],
-  [10, "RankGPT Qwen-3 32B", 61.05, 80.18, 58.50],
-  [11, "RankGPT LLaMA-3.3 70B", 59.92, 79.80, 53.50],
-  [12, "RankGPT GPT-5.2", 64.57, 81.88, 56.50]
+  [1, "Qwen Reranker 4B", 64.53, 81.97, 62.50],
+  [2, "Tool-Rank 8B", 64.36, 81.96, 60.00],
+  [3, "RankGPT GPT-5.2", 64.57, 81.88, 56.50],
+  [4, "Tool-Rank 4B", 64.45, 81.78, 59.50],
+  [5, "Qwen Reranker 0.6B", 63.72, 81.08, 58.50],
+  [6, "RankGPT Qwen-3 32B", 61.05, 80.18, 58.50],
+  [7, "RankGPT LLaMA-3.3 70B", 59.92, 79.80, 53.50],
+  [8, "BGE Reranker v2", 59.84, 79.59, 59.00],
+  [9, "MonoT5 Base MS-Marco", 57.37, 78.69, 60.00],
+  [10, "MXBAI Reranker Large", 53.42, 76.32, 58.00],
+  [11, "Random Shuffle*", 50.98, 74.61, 61.00],
+  [12, "MiniLM-L12 v2", 48.06, 73.53, 52.00]
 ]

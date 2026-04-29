@@ -12,13 +12,17 @@ function renderLeaderboardTable(jsonPath, containerId) {
       });
       html += '</tr>';
 
-      rows.forEach(function(row) {
-        html += '<tr>';
+      rows.forEach(function(row, rowIndex) {
+        var isTop = rowIndex === 0;
+        html += isTop ? '<tr class="top-row">' : '<tr>';
+        var lastCol = headers.length - 1;
         row.forEach(function(cell, i) {
+          var underline = isTop && i !== lastCol;
           if (i === 1) {
-            html += '<td><b>' + cell + '</b></td>';
+            var label = isTop ? '🥇 ' + cell : cell;
+            html += '<td><b>' + (underline ? '<u>' + label + '</u>' : label) + '</b></td>';
           } else {
-            html += '<td>' + cell + '</td>';
+            html += '<td>' + (underline ? '<u>' + cell + '</u>' : cell) + '</td>';
           }
         });
         html += '</tr>';
@@ -26,6 +30,7 @@ function renderLeaderboardTable(jsonPath, containerId) {
 
       html += '</table>';
       document.getElementById(containerId).innerHTML = html;
+      if (typeof sortTable !== 'undefined') sortTable.init();
     });
 }
 
