@@ -233,7 +233,7 @@ uv run python -m scripts.load_dataset
 ## Citation
 
 ```bibtex
-@misc{wu2026agentsearchbench,
+@article{wu2026agentsearchbench,
       title={AgentSearchBench: A Benchmark for AI Agent Search in the Wild}, 
       author={Bin Wu and Arastun Mammadli and Xiaoyu Zhang and Emine Yilmaz},
       year={2026},
