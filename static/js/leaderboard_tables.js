@@ -5,6 +5,20 @@ function renderLeaderboardTable(jsonPath, containerId) {
       var headers = data[0];
       var rows = data.slice(1);
 
+      var lastCol = headers.length - 1;
+
+      // Find the per-column maximum for numeric metric columns (skip #, Model, Completeness)
+      var maxPerCol = {};
+      rows.forEach(function(row) {
+        row.forEach(function(cell, i) {
+          if (i === 0 || i === 1 || i === lastCol) return;
+          var val = parseFloat(cell);
+          if (!isNaN(val) && (maxPerCol[i] === undefined || val > maxPerCol[i])) {
+            maxPerCol[i] = val;
+          }
+        });
+      });
+
       var html = '<table class="js-sort-table" id="results-' + containerId + '">';
       html += '<tr>';
       headers.forEach(function(h) {
@@ -15,14 +29,13 @@ function renderLeaderboardTable(jsonPath, containerId) {
       rows.forEach(function(row, rowIndex) {
         var isTop = rowIndex === 0;
         html += isTop ? '<tr class="top-row">' : '<tr>';
-        var lastCol = headers.length - 1;
         row.forEach(function(cell, i) {
-          var underline = isTop && i !== lastCol;
+          var isBest = maxPerCol[i] !== undefined && parseFloat(cell) === maxPerCol[i];
           if (i === 1) {
             var label = isTop ? '🥇 ' + cell : cell;
-            html += '<td><b>' + (underline ? '<u>' + label + '</u>' : label) + '</b></td>';
+            html += '<td><b>' + (isBest ? '<u>' + label + '</u>' : label) + '</b></td>';
           } else {
-            html += '<td>' + (underline ? '<u>' + cell + '</u>' : cell) + '</td>';
+            html += '<td>' + (isBest ? '<u>' + cell + '</u>' : cell) + '</td>';
           }
         });
         html += '</tr>';
