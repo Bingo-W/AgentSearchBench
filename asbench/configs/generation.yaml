@@ -18,7 +18,7 @@ selector_models:        # defined in models.yaml
   bge: 1.0
   toolret: 1.0
 # Response Generation
-active_platforms:
+active_platforms:       # defined in models.yaml
   - agentainetwork
   # - openaiagents
 # Judging

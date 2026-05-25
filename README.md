@@ -166,7 +166,11 @@ Modify the configurations in [generation.yaml](asbench/configs/generation.yaml) 
 
 ## Probing
 
-To start with, follow the [installation steps](#requirements). Following this you can prepare your probing tasks with the outlined JSONL format:
+To start with, follow the [installation steps](#requirements). See [probing](asbench/generation/PROBING.md) for step-by-step details on how to probe the [AgentBase](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Agents).
+
+## Quick Start
+
+Probes should follow a predefined JSONL format:
 
 ```bash
 {"q:0": ["Draft a legally compliant performance improvement plan ...", ["agt:openaiagents:402f63@v1.1", "agt:agentainetwork:f39967@v1.1"]]}
