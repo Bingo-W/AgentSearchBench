@@ -14,7 +14,7 @@ We provide examples on how to run each task type using the full pipeline.
 uv run python -m scripts.generate \
     --type single \
     --agentbase asbench/data/agentbase.csv \
-    --generate_labels True \
+    --generate-labels True \
     --debug True \
     --experiment-name tq-single-agent
 ```
@@ -34,21 +34,21 @@ uv run python -m scripts.generate \
     --type real \
     --agentbase asbench/data/agentbase.csv \
     --source-tasks asbench/data/examples/gaia.jsonl \
-    --generate_labels True \
+    --generate-labels True \
     --debug True \
     --experiment-name tq-real
 ```
 
 ### Multi-Agent Task Query
 
-Multi-agent task query re-use existing single-agent task query. You should reference filepath to single-agent task query files. We recommend running single-agent pipeline first with `generate_labels` and `debug` set to `True`. An example is provided at [here](../data/examples).
+Multi-agent task query re-use existing single-agent task query. You should reference filepath to single-agent task query files. We recommend running single-agent pipeline first with `generate-labels` and `debug` set to `True`. An example is provided at [here](../data/examples).
 
 ```bash
 uv run python -m scripts.generate \
     --type multi \
     --agentbase asbench/data/agentbase.csv \
     --source-tasks asbench/data/examples/task_query_single_tasks.jsonl \
-    --generate_labels True \
+    --generate-labels True \
     --debug True \
     --experiment-name tq-multi-agent
 ```
@@ -59,7 +59,7 @@ uv run python -m scripts.generate \
 uv run python -m scripts.generate \
     --type description \
     --agentbase asbench/data/agentbase.csv \
-    --generate_labels True \
+    --generate-labels True \
     --debug True \
     --experiment-name td
 ```

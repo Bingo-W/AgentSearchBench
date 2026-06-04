@@ -3,7 +3,6 @@
 import logging
 import time
 import requests
-import random
 from asbench.generation.responses.base import PlatformExecutor
 
 logger = logging.getLogger(__name__)
@@ -11,8 +10,11 @@ logger = logging.getLogger(__name__)
 class AgentAIExecutor(PlatformExecutor):
     def setup(self):
         self.url = "https://api-lr.agent.ai/v1/action/invoke_agent"
-        self.api_keys = self.credential_info
-        self._switch_api_key()
+        self.api_key = self.credential_info
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
 
     def execute(self, agent_metadata: dict, query: str) -> tuple[str, float, int]:
         response = ""
@@ -31,7 +33,6 @@ class AgentAIExecutor(PlatformExecutor):
 
             if api_response.get("status") != 200:
                 logger.error(f"API call failed with status {api_response.get('status')}: {api_response.get('error')}")
-                self._switch_api_key() # soft enforcement (e.g., avoid rate limits)
         
             response = api_response.get("response", "")
             execution_time = time.time() - start_time
@@ -52,13 +53,5 @@ class AgentAIExecutor(PlatformExecutor):
                 return field.replace("agentnetworkid: ", "").strip()
         return ""
     
-    def _switch_api_key(self):
-        """ Switch to a different available API key in case of rate/credit limits """
-        self.api_key = random.choice(self.api_keys)
-        self.headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json",
-        }
-
     def teardown(self):
         pass

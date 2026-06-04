@@ -62,14 +62,14 @@ class OpenAIExecutor(PlatformExecutor):
         if self.debug:
             logger.info(f"Executing agent {agent_metadata['agent_id']}")
 
-        self.page.goto(gpt_url, wait_until="domcontentloaded", timeout=60_000)
-        time.sleep(2)
-
-        if gpt_url not in self.page.url:
-            return f"Error - GPT not found or inaccessible at {gpt_url}", 0.0, 404
-
         start_time = time.time()
         try:
+            self.page.goto(gpt_url, wait_until="domcontentloaded", timeout=60_000)
+            time.sleep(2)
+
+            if gpt_url not in self.page.url:
+                return f"Error - GPT not found or inaccessible at {gpt_url}", 0.0, 404
+
             response = self._send_message(query)
 
             while response.get("text", "") == "Our systems have detected unusual activity coming from your system. Please try again later.":
