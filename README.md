@@ -1,3 +1,5 @@
+
+
 <div align= "center">
     <h1> AgentSearchBench 🔍</h1>
 </div>
@@ -224,7 +226,7 @@ Update the `.env` with api keys required by your `models.yaml` (depending on you
 HF_TOKEN=
 HF_API_KEY=
 OPENAI_API_KEY=
-AGENT_AI_NETWORK_API_KEY=
+AGENT_AI_NETWORK_KEY=
 ...
 ```
 
